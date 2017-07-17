@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #itemList, #shoppingCart {
+            float: left;
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        #shoppingCart{
+            height: 500px;
+        }
+
+        #price{
+            height:50px;
+            width: 50px;
+            float:right;
+            margin-right:70%;
+        }
+        .item{
+            height:50px;
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+<div id="itemList">
+    <div class="item" draggable="true"  id="drag1" value="1">item1 (value 1)</div>
+    <div class="item" draggable="true"  id="drag2" value="2">item2 (value 2)</div>
+    <div class="item" draggable="true"  id="drag3" value="3">item3 (value 3)</div>
+    <div class="item" draggable="true"  id="drag4" value="4">item4 (value 4)</div>
+</div>
+
+<div id="shoppingCart" class="cartDiv" ></div>
+
+Price :<div id="price"></div>
+
+<script src="DragandDrop.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded",addDragAndDropHandlers , false);
+</script>
+</body>
+</html>
