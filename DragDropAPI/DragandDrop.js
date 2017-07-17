@@ -7,7 +7,6 @@ function addDragAndDropHandlers(){
 
     for(var i=0;i<itemList.length;i++){
         itemList[i].addEventListener("dragstart",function(ev){
-
             ev.dataTransfer.setData("Text",this.getAttribute('id'));
         })
     }
@@ -19,13 +18,17 @@ function addDragAndDropHandlers(){
     items.addEventListener("drop",function(ev){
         var itemId = ev.dataTransfer.getData("Text"),
         domEleValue = parseInt(document.getElementById(itemId).getAttribute('value'));
-        if(ev.target.getAttribute('id') == "itemList"){
+
+        //(document.getElementById(itemId)).parentNode.getAttribute('id')
+
+        if(ev.target.getAttribute('id') == "itemList" && (document.getElementById(itemId)).parentNode.getAttribute('id')!== "itemList"){
             ev.target.appendChild(document.getElementById(itemId));
             sum-=domEleValue;
             totalPrice.innerHTML = sum;
+            console.log(ev.target);
         }
 
-        else{
+        else if (ev.target.parentNode.getAttribute('id') === "itemList" && (document.getElementById(itemId)).parentNode.getAttribute('id')!== "itemList"){
             ev.target.parentNode.appendChild(document.getElementById(itemId));
             sum-=domEleValue;
             totalPrice.innerHTML = sum;
@@ -40,10 +43,11 @@ function addDragAndDropHandlers(){
     shoppingCart.addEventListener("drop",function(ev){
         ev.preventDefault();
         var itemId = ev.dataTransfer.getData("Text");
-        ev.target.appendChild(document.getElementById(itemId));
-        var domEleValue = parseInt(document.getElementById(itemId).getAttribute('value'));
-        sum+=domEleValue;
-        totalPrice.innerHTML = sum;
+        if(ev.target.getAttribute('id') == "shoppingCart" && (document.getElementById(itemId)).parentNode.getAttribute('id')!== "shoppingCart"){
+            ev.target.appendChild(document.getElementById(itemId));
+            var domEleValue = parseInt(document.getElementById(itemId).getAttribute('value'));
+            sum+=domEleValue;
+            totalPrice.innerHTML = sum;
+        }
     })
-
 }
