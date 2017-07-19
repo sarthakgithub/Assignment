@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form>
+        <label>Rows</label>
+        <input for="rangeInputRow" oninput="rangeInputRow.value=amount.value" id="rowBox" type="text" name="amount" />
+
+        <input for="amount" oninput="amount.value=rangeInputRow.value" id="sliderRow" type="range" min="1" max="10" name="rangeInputRow" />
+
+        <br>
+        <label>Columns</label>
+
+        <input for="rangeInputColumn" oninput="rangeInputColumn.value=amountColumn.value" id="columnBox" type="text" name="amountColumn" />
+
+        <input for="amount" oninput="amountColumn.value=rangeInputColumn.value" id="sliderColumn" type="range" min="1" max="10" name="rangeInputColumn" />
+
+    </form>
+</body>
+</html>
